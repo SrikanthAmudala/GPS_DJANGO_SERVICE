@@ -12,22 +12,22 @@ class Data:
 
     def get_gps_data(self):
         try:
-            client1 = Client("https://api.dataalchemist.co.uk/Pipe.asmx?WSDL")
+            client1 = Client("give your client id here")
             requestId = client1.service.BeginGetGps(
-                guid="38056A78-2722-43A3-80D0-AFE461AC71AA",
+                guid="give your guid here",
                 # startTime=datetime.datetime(2017, 7, 7, 21 , 0, 1),
                 endTime=datetime.datetime.now(),
                 startTime=datetime.datetime.now() - datetime.timedelta(seconds=30),
                 gatewayId=193
             )
             while (client1.service.GetProgress(
-                    guid="38056A78-2722-43A3-80D0-AFE461AC71AA",
+                    guid="give your guid here",
                     requestId=int(requestId)) != 'Ready'):
                 pass
 
             print 'request id: ', requestId
             gps = client1.service.CompleteGetGps(
-                guid="38056A78-2722-43A3-80D0-AFE461AC71AA",
+                guid="give your guid here",
                 requestId=int(requestId)
             )
 
